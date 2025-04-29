@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speedstar Motors | Feedback</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function validateForm(event) {
+            event.preventDefault(); // Prevent form submission if validation fails
+            
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let rating = document.getElementById("rating").value;
+            let comments = document.getElementById("comments").value.trim();
+
+            let nameRegex = /^[A-Za-z\s]{2,}$/; // At least 2 characters, letters & spaces only
+            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Standard email format
+
+            // Validate Name
+            if (!nameRegex.test(name)) {
+                alert("Invalid Name: Must contain only letters and at least 2 characters.");
+                return false;
+            }
+
+            // Validate Email
+            if (!emailRegex.test(email)) {
+                alert("Invalid Email: Please enter a valid email address.");
+                return false;
+            }
+
+            // Validate Rating
+            if (rating === "") {
+                alert("Please select a rating.");
+                return false;
+            }
+
+            // Validate Comments
+            if (comments.length < 5) {
+                alert("Comments must be at least 5 characters long.");
+                return false;
+            }
+
+            alert("Feedback submitted successfully!");
+            document.getElementById("feedback-form").submit(); // Submit the form if valid
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <div class="logo">
+                <h1>Speedstar Motors</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Introduction Section -->
+        <section class="intro">
+            <h2>Your Opinion Matters to Us!</h2>
+            <p>At Speedstar Motors, customer satisfaction is our top priority. Your feedback helps us enhance our services and provide a better experience for everyone. Whether you had a great time or faced challenges, we want to hear from you!</p>
+        </section>
+
+        <!-- Feedback Form Section -->
+        <section class="feedback">
+            <h2>Share Your Experience</h2>
+            <p>Let us know about your experience with Speedstar Motors. Your feedback helps us improve our services.</p>
+            <form id="feedback-form" action="#" method="POST" onsubmit="return validateForm(event)">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="rating">Rate Us:</label>
+                <select id="rating" name="rating" required>
+                    <option value="">-- Select a Rating --</option>
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Good</option>
+                    <option value="3">3 - Average</option>
+                    <option value="2">2 - Poor</option>
+                    <option value="1">1 - Very Poor</option>
+                </select>
+
+                <label for="comments">Comments:</label>
+                <textarea id="comments" name="comments" rows="3" required></textarea>
+
+                <button type="submit" class="submit-btn">Submit Feedback</button>
+            </form>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial">
+                <p>“Speedstar Motors provided exceptional service! The staff was friendly, and my car was serviced quickly.”</p>
+                <h4>- Jessica M.</h4>
+            </div>
+            <div class="testimonial">
+                <p>“I had an amazing experience buying my car here. Great deals and excellent customer support.”</p>
+                <h4>- Mark T.</h4>
+            </div>
+            <div class="testimonial">
+                <p>“Highly recommend Speedstar Motors! They take care of their customers and go the extra mile.”</p>
+                <h4>- Emily R.</h4>
+            </div>
+        </section>
+
+        <!-- Contact Information Section -->
+        <section class="contact-info">
+            <h2>Need Further Assistance?</h2>
+            <p>If you have additional questions or need support, feel free to reach out to us.</p>
+            <ul>
+                <li><strong>Phone:</strong> +1 234 567 890</li>
+                <li><strong>Email:</strong> support@speedstarmotors.com</li>
+                <li><strong>Address:</strong> 123 Auto Street, Car City, USA</li>
+            </ul>
+        </section>
+
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2025 Speedstar Motors. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
